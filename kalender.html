@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Studio - RUmah Nada Brawijaya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Tambahan khusus halaman Display */
+        body {
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        nav {
+            justify-content: center; /* Logo di tengah */
+            margin-bottom: 30px;
+        }
+        .nav-btns, .main-booking-btn, .admin-section {
+            display: none !important; /* Sembunyikan tombol booking & navigasi admin */
+        }
+        .container {
+            max-width: 100%;
+        }
+        .calendar-header-wrapper {
+            flex-direction: column;
+            gap: 15px;
+        }
+        .booking-table th {
+            padding: 15px 5px;
+        }
+        /* Membuat tabel sedikit lebih besar untuk display */
+        .booking-table td {
+            height: 60px;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <nav>
+        <div class="logo">
+            <i class="fas fa-music"></i> 
+            <span>RUmah Nada Brawijaya</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="calendar-header-wrapper">
+            <div class="nav-controls">
+                <button class="btn btn-outline nav-btn" id="prev-week">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 id="week-label" style="text-align: center;">Memuat Jadwal...</h2>
+                <button class="btn btn-outline nav-btn" id="next-week">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <button class="btn btn-outline" id="theme-toggle" style="position: absolute; right: 20px; top: 20px;">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="booking-table">
+                <thead>
+                    <tr id="table-head">
+                        <th>Jam</th>
+                        </tr>
+                </thead>
+                <tbody id="table-body">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <script>
+        // Script tambahan agar halaman ini otomatis refresh data setiap 5 menit
+        // Sangat berguna jika dijadikan layar display permanen
+        setInterval(() => {
+            location.reload();
+        }, 300000); // 300.000 ms = 5 menit
+    </script>
+</body>
+</html>

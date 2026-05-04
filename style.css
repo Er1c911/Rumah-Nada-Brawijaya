@@ -1,0 +1,99 @@
+:root {
+    --bg: #121212; --card: #1e1e1e; --text: #ffffff;
+    --accent: #FFD700; --red: #ff4c4c; --border: #333; --green: #2ecc71;
+}
+[data-theme="light"] {
+    --bg: #f8f9fa; --card: #ffffff; --text: #212529;
+    --accent: #fbc02d; --border: #dee2e6;
+}
+
+* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background: var(--bg); color: var(--text); margin: 0; transition: 0.3s; }
+.container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+
+/* --- PERBAIKAN IKON & SPASI --- */
+
+/* Utility untuk judul & teks dengan ikon */
+.flex-center {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Spasi antar ikon dan teks */
+}
+
+/* Transisi Halus untuk semua Ikon */
+i {
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+/* Efek Hover saat Kursor menyentuh Ikon */
+i:hover {
+    transform: scale(1.2) rotate(5deg); /* Membesar dan sedikit miring */
+    color: var(--accent);
+}
+
+/* Button Styling */
+.btn { 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    gap: 12px; /* Spasi di dalam tombol antara ikon dan teks */
+    transition: 0.2s ease;
+}
+
+/* Efek khusus hover tombol agar ikon di dalamnya ikut bergerak */
+.btn:hover i {
+    transform: translateX(3px); /* Ikon sedikit bergeser ke kanan */
+}
+
+.btn-accent { background: var(--accent); color: #000; }
+.btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--text); }
+.btn-red { background: var(--red); color: white; }
+.btn-green { background: var(--green); color: white; }
+
+/* Navbar */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: var(--card); border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 1000; }
+.logo { font-weight: 800; color: var(--accent); font-size: 1.2rem; text-transform: uppercase; display: flex; align-items: center; gap: 12px; }
+.nav-btns { display: flex; gap: 15px; align-items: center; }
+
+/* Sisanya tetap sama... */
+.calendar-header-wrapper { background: var(--card); padding: 25px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 30px; }
+.nav-controls { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+.nav-btn { min-width: 230px; }
+.table-responsive { overflow-x: auto; background: var(--card); border-radius: 8px; border: 1px solid var(--border); }
+.booking-table { width: 100%; border-collapse: collapse; min-width: 900px; }
+.booking-table th, .booking-table td { border: 1px solid var(--border); padding: 12px; text-align: center; }
+.status-cell { padding: 8px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; }
+.status-terisi { background: rgba(255, 215, 0, 0.15); color: var(--accent); border: 1px solid var(--accent); }
+.status-tutup { background: var(--red); color: white; }
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(4px); z-index: 2000; }
+.modal-content { background: var(--card); width: 90%; max-width: 420px; margin: 50px auto; padding: 25px; border-radius: 12px; border: 1px solid var(--accent); }
+input, .styled-select { width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 5px; margin-bottom: 15px; }
+.card { background: var(--card); padding: 20px; border-radius: 10px; border: 1px solid var(--border); }
+.admin-border { border: 2px dashed var(--accent); }
+/* Efek Highlight Header Hari Ini */
+.today-highlight {
+    background-color: var(--accent) !important;
+    color: #000 !important;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Efek Kolom Hari Ini */
+.today-column {
+    background-color: rgba(255, 215, 0, 0.05); /* Kuning transparan tipis */
+    border-left: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+}
+
+/* Penyesuaian teks label mingguan agar rapi */
+#week-label {
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    margin: 10px 0;
+}
