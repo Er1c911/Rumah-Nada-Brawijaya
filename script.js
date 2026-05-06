@@ -225,7 +225,7 @@ function rejectReq(index) {
 function handleSetClose() {
     const d = document.getElementById('close-date').value;
     if(!d) return;
-    schedules.push({ id: Date.now(), name: "STUDIO TUTUP", date: d, start: "09.00", end: "23.00", type: 'tutup' });
+    schedules.push({ id: Date.now(), name: "STUDIO TUTUP", date: d, start: "09.00", end: "24.00", type: 'tutup' });
     save();
 }
 
