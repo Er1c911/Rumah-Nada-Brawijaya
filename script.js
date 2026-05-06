@@ -1,34 +1,38 @@
-// --- KONFIGURASI FIREBASE ---
-// Dapatkan ini dari Firebase Console > Project Settings
+// --- 1. KONFIGURASI FIREBASE ---
 const firebaseConfig = {
-    apiKey: "ISI_API_KEY_KAMU",
-    authDomain: "ISI_PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://ISI_PROJECT_ID-default-rtdb.firebaseio.com",
-    projectId: "ISI_PROJECT_ID",
-    storageBucket: "ISI_PROJECT_ID.appspot.com",
-    messagingSenderId: "ISI_ID",
-    appId: "ISI_APP_ID"
+    apiKey: "AIzaSyD6qDgPe7s1DD_F5zXOiFU-nKwATsuVaFA",
+    authDomain: "rumah-nada-brawijaya.firebaseapp.com",
+    // Link database Singapore milikmu
+    databaseURL: "https://rumah-nada-brawijaya-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "rumah-nada-brawijaya",
+    storageBucket: "rumah-nada-brawijaya.firebasestorage.app",
+    messagingSenderId: "593614745117",
+    appId: "1:593614745117:web:2ff5e80d23b905c26f20f4",
+    measurementId: "G-VQRJTBNW8K"
 };
 
-// Inisialisasi Firebase
+// Inisialisasi Firebase (Menggunakan cara Compat/Tradisional)
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// --- KONFIGURASI UTAMA ---
+// --- 2. KONFIGURASI UTAMA ---
 const ADMIN_NUMBER = "6282143857754";
-const ADMIN_CRED = { user: "Divisi RT", pass: "rtkeras" };
+const ADMIN_CRED = { 
+    user: "Divisi RT", 
+    pass: "rtkeras" 
+};
 
 let currentDate = new Date();
 let schedules = [];
 let pendingRequests = [];
 let isAdmin = sessionStorage.getItem('is_admin') === 'true';
 
-// --- MONITOR DATA SECARA REAL-TIME ---
-// Setiap ada perubahan di Database, website akan otomatis terupdate tanpa refresh
+// --- 3. MONITOR DATA REAL-TIME ---
+// Mengambil data dari Firebase setiap kali ada perubahan
 db.ref('schedules').on('value', (snapshot) => {
     const data = snapshot.val();
     schedules = data ? Object.values(data) : [];
-    renderTable(); // Gambar ulang tabel setiap ada data baru
+    renderTable(); 
 });
 
 db.ref('pendingRequests').on('value', (snapshot) => {
@@ -37,6 +41,7 @@ db.ref('pendingRequests').on('value', (snapshot) => {
     if(isAdmin) updateNotificationPanel();
 });
 
+// --- 4. LOGIKA JALANNYA PROGRAM ---
 document.addEventListener('DOMContentLoaded', () => {
     if(document.getElementById('book-start')) populateTimeOptions();
 
@@ -112,7 +117,8 @@ function renderTable() {
 
     const optionsMonth = { month: 'long' };
     const monthName = start.toLocaleDateString('id-ID', optionsMonth);
-    const monthRange = monthName === new Date(weekDates[6]).toLocaleDateString('id-ID', optionsMonth) ? monthName : `${monthName} - ${new Date(weekDates[6]).toLocaleDateString('id-ID', optionsMonth)}`;
+    const endMonth = new Date(weekDates[6]).toLocaleDateString('id-ID', optionsMonth);
+    const monthRange = monthName === endMonth ? monthName : `${monthName} - ${endMonth}`;
     
     if(weekLabel) weekLabel.innerText = `Jadwal Mingguan : Bulan ${monthRange}, (${start.getDate()} - ${new Date(weekDates[6]).getDate()})`;
 
@@ -132,7 +138,6 @@ function renderTable() {
                     cell.style.cursor = 'pointer';
                     cell.onclick = () => {
                         if(confirm(`Hapus jadwal: ${found.name}?`)) {
-                            // Hapus dari Firebase berdasarkan ID
                             db.ref('schedules').orderByChild('id').equalTo(found.id).once('value', snapshot => {
                                 snapshot.forEach(child => child.ref.remove());
                             });
@@ -192,8 +197,10 @@ function handleLogin() {
 }
 
 function showAdminUI() {
-    document.getElementById('login-overlay').style.display = 'none';
-    document.getElementById('admin-content').style.display = 'block';
+    const overlay = document.getElementById('login-overlay');
+    const content = document.getElementById('admin-content');
+    if(overlay) overlay.style.display = 'none';
+    if(content) content.style.display = 'block';
 }
 
 function updateNotificationPanel() {
@@ -219,7 +226,6 @@ function approveReq(id) {
     const req = pendingRequests.find(r => r.id === id);
     if(req) {
         db.ref('schedules').push(req);
-        // Hapus dari pending
         db.ref('pendingRequests').orderByChild('id').equalTo(id).once('value', snapshot => {
             snapshot.forEach(child => child.ref.remove());
         });
