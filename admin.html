@@ -3,82 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rumah Nada Brawijaya - Studio Booking</title>
+    <title>Dashboard Admin - Rumah Nada Brawijaya</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body oncontextmenu="return false;">
 
-    <nav>
-        <div class="logo"><i class="fas fa-music"></i> <span>Rumah Nada Brawijaya</span></div>
-        <div class="nav-btns">
-            <button class="btn btn-outline" id="theme-toggle"><i id="theme-icon" class="fas fa-sun"></i></button>
-            <a href="admin.html" class="btn btn-accent"><i class="fas fa-user-lock"></i> <span>Portal Admin</span></a>
+    <div id="login-overlay" class="modal" style="display: block;">
+        <div class="modal-content">
+            <h3 class="flex-center"><i class="fas fa-lock"></i> <span>Login Divisi_RT</span></h3>
+            <input type="text" id="admin-user" placeholder="Username">
+            <input type="password" id="admin-password" placeholder="Password">
+            <button class="btn btn-accent w-100" id="submit-login">Masuk</button>
+            <a href="index.html" class="btn btn-outline w-100 mt-10">Kembali ke Beranda</a>
         </div>
-    </nav>
+    </div>
 
-    <div class="container">
-        <div class="calendar-header-wrapper">
-            <div class="nav-controls">
+    <div id="admin-content" style="display: none;">
+        <nav>
+            <div class="logo"><i class="fas fa-user-shield"></i> <span>Admin Dashboard</span></div>
+            <div class="nav-btns">
+                <a href="index.html" class="btn btn-outline"><i class="fas fa-home"></i> <span>Lihat Web</span></a>
+                <button class="btn btn-red" id="logout-btn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></button>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div id="request-notification-area" class="card admin-border" style="margin-bottom: 25px;">
+                <h3 class="flex-center" style="color: var(--accent);">
+                    <i class="fas fa-bell"></i> <span>Pengajuan Booking (<span id="req-count">0</span>)</span>
+                </h3>
+                <div id="request-list"></div>
+            </div>
+
+            <div class="card border-accent" style="margin-bottom: 25px;">
+                <h3 class="flex-center"><i class="fas fa-door-closed"></i> <span>Tutup Operasional</span></h3>
+                <div class="time-row" style="margin-top: 10px;">
+                    <input type="date" id="close-date">
+                    <button class="btn btn-red" id="set-close-btn">Set Tutup Studio</button>
+                </div>
+            </div>
+
+            <div class="calendar-header-wrapper">
+                <div class="nav-controls">
                     <button class="btn btn-outline nav-btn" id="prev-week"><i class="fas fa-chevron-left"></i></button>
                     <h2 id="week-label">Memuat...</h2>
                     <button class="btn btn-outline nav-btn" id="next-week"><i class="fas fa-chevron-right"></i></button>
                 </div>
-            <div class="current-info">
-                
-                <button class="btn btn-accent main-booking-btn" id="open-booking-main">
-                    <i class="fas fa-calendar-plus"></i> <span>Booking Sekarang</span>
-                </button>
+                <p style="text-align: center; color: var(--accent);"><small>*Admin: Klik kolom kosong untuk isi manual, Klik jadwal terisi untuk hapus.</small></p>
             </div>
-        </div>
 
-        <div class="table-responsive">
-            <table class="booking-table">
-                <thead><tr id="table-head"><th>Jam</th></tr></thead>
-                <tbody id="table-body"></tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="booking-table">
+                    <thead><tr id="table-head"><th>Jam</th></tr></thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <div id="booking-modal" class="modal">
-    <div class="modal-content">
-        <h3 class="flex-center"><i class="fas fa-edit"></i> <span>Formulir Sewa</span></h3>
-        
-        <label>Nama Penyewa/Band</label>
-        <input type="text" id="book-name" placeholder="Masukkan Nama">
-        
-        <label>Nomor WA (Aktif)</label>
-        <input type="tel" id="book-phone" placeholder="628xxx">
-        
-        <label>Tanggal</label>
-        <input type="date" id="book-date">
-        
-        <div class="time-row">
-            <div>
-                <label>Mulai</label>
-                <select id="book-start" class="styled-select"></select>
-            </div>
-            <div>
-                <label>Selesai</label>
-                <select id="book-end" class="styled-select"></select>
-            </div>
-        </div>
-
-        <p style="color: red; font-size: 0.8rem; margin-top: 5px; margin-bottom: 15px;">
-            *Maksimal penyewaan studio adalah 3 jam.
-        </p>
-
-        <button class="btn btn-accent w-100" id="submit-booking">
-            <i class="fas fa-paper-plane"></i> <span>Ajukan Booking</span>
-        </button>
-        
-        <button class="btn btn-outline w-100 mt-10 close-modal">Batal</button>
-    </div>
-</div>
-
+    <script>
+        // Tandai bahwa file ini adalah file admin
+        const IS_ADMIN_FILE = true;
+    </script>
+    
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 
 <script src="script.js"></script>
+
 </body>
 </html>
