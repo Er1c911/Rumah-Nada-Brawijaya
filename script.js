@@ -29,9 +29,12 @@ let isAdmin = sessionStorage.getItem('is_admin') === 'true';
 
 // --- 3. MONITOR DATA REAL-TIME ---
 // Mengambil data dari Firebase setiap kali ada perubahan
+// Ganti bagian ini di script.js kamu
 db.ref('schedules').on('value', (snapshot) => {
     const data = snapshot.val();
+    // Jika data ada, ubah jadi array. Jika tidak, kosongkan.
     schedules = data ? Object.values(data) : [];
+    console.log("Data Jadwal Diterima:", schedules); // Tambahan untuk cek di console
     renderTable(); 
 });
 
