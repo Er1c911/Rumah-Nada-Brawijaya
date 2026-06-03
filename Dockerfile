@@ -23,7 +23,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY composer.json composer.lock artisan bootstrap/app.php ./
+COPY composer.json composer.lock artisan ./
+COPY bootstrap ./bootstrap
 RUN composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
 
 COPY package*.json ./
