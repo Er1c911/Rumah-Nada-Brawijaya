@@ -23,14 +23,13 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY composer.json composer.lock artisan ./
-COPY bootstrap ./bootstrap
-RUN composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-scripts
 
 COPY package*.json ./
-RUN npm ci
-
 COPY . .
+RUN npm ci
+RUN php artisan package:discover --ansi
 RUN npm run build
 RUN php -r "file_exists('.env') || copy('.env.example', '.env');"
 RUN php artisan key:generate --force
