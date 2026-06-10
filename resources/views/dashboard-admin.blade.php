@@ -113,26 +113,6 @@
     </div>
     @endif
 
-    <!-- SPREADSHEET DATA -->
-
-    <div class="mb-10">
-        <div class="bg-[#111111] border border-gray-700 rounded-3xl p-4 sm:p-6">
-            <div class="flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <h2 class="text-xl sm:text-2xl font-black text-yellow-500">Spreadsheet Data</h2>
-                <a
-                    href="{{ $scheduleSpreadsheetUrl }}"
-                    target="_blank"
-                    class="bg-yellow-500 hover:bg-yellow-400 text-black px-4 sm:px-5 py-2 sm:py-3 rounded-2xl font-bold transition text-sm sm:text-base w-full sm:w-auto text-center"
-                >
-                    Buka Jadwal Spreadsheet
-                </a>
-            </div>
-            <div class="mt-3 sm:mt-4 text-xs text-gray-500">
-                Jadwal terakhir diperbarui: {{ $scheduleSpreadsheetUpdatedAt }}
-            </div>
-        </div>
-    </div>
-
     <!-- BOOKING PENDING -->
 
     <div class="mb-10">
