@@ -53,11 +53,11 @@
 
         </div>
 
-        <div class="flex gap-3">
+        <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
 
             <a
                 href="/booking"
-                class="bg-yellow-500 hover:bg-yellow-400 text-black px-5 py-3 rounded-2xl font-black transition"
+                class="bg-yellow-500 hover:bg-yellow-400 text-black px-3 sm:px-5 py-2 sm:py-3 rounded-2xl font-black transition text-sm sm:text-base text-center"
             >
 
                 Booking Sekarang
@@ -66,7 +66,7 @@
 
             <a
                 href="/calendar"
-                class="bg-[#1a1a1a] border border-gray-700 hover:border-yellow-500 px-5 py-3 rounded-2xl font-bold transition"
+                class="bg-[#1a1a1a] border border-gray-700 hover:border-yellow-500 px-3 sm:px-5 py-2 sm:py-3 rounded-2xl font-bold transition text-sm sm:text-base text-center"
             >
 
                 Lihat Kalender
@@ -98,11 +98,11 @@
 
     <!-- NAVIGATION -->
 
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-6">
 
         <a
             href="/?start={{ $prevWeek }}"
-            class="bg-[#111111] border border-gray-700 hover:border-yellow-500 px-5 py-3 rounded-2xl transition"
+            class="w-full sm:w-auto bg-[#111111] border border-gray-700 hover:border-yellow-500 px-4 py-2 rounded-2xl transition text-center text-sm sm:text-base"
         >
 
             ← Minggu Sebelumnya
@@ -111,7 +111,7 @@
 
         <a
             href="/?start={{ $nextWeek }}"
-            class="bg-[#111111] border border-gray-700 hover:border-yellow-500 px-5 py-3 rounded-2xl transition"
+            class="w-full sm:w-auto bg-[#111111] border border-gray-700 hover:border-yellow-500 px-4 py-2 rounded-2xl transition text-center text-sm sm:text-base"
         >
 
             Minggu Selanjutnya →
@@ -134,7 +134,7 @@
 
                     <!-- WAKTU -->
 
-                    <th class="sticky left-0 top-0 z-30 bg-yellow-500 text-black p-3 sm:p-4 min-w-[110px] text-center text-sm sm:text-base font-black border border-gray-700">
+                    <th class="sticky left-0 top-0 z-30 bg-yellow-500 text-black p-2 sm:p-3 min-w-[70px] sm:min-w-[110px] text-center text-xs sm:text-sm font-black border border-gray-700">
 
                         Waktu
 
@@ -146,22 +146,22 @@
 
                     <th data-date="{{ $day->format('Y-m-d') }}" class="
                         sticky top-0 z-20
-                        p-3 sm:p-4
-                        min-w-[120px] sm:min-w-[150px]
+                        p-2 sm:p-3
+                        min-w-[80px] sm:min-w-[120px]
                         border border-gray-700
                         bg-[#111111]
                         text-white
                     ">
 
-                        <div class="font-black text-sm sm:text-base">
+                        <div class="font-black text-xs sm:text-sm">
 
-                            {{ $day->locale('id')->translatedFormat('l') }}
+                            {{ substr($day->locale('id')->translatedFormat('l'), 0, 3) }}
 
                         </div>
 
-                        <div class="text-xs sm:text-sm mt-1">
+                        <div class="text-xs mt-1">
 
-                            {{ $day->format('d-m-Y') }}
+                            {{ $day->format('d-m') }}
 
                         </div>
 
@@ -183,7 +183,7 @@
 
                     <!-- JAM -->
 
-                    <td class="sticky left-0 z-20 bg-[#111111] border border-gray-700 text-center font-bold p-3 min-w-[110px]">
+                    <td class="sticky left-0 z-20 bg-[#111111] border border-gray-700 text-center font-bold p-2 sm:p-3 min-w-[70px] sm:min-w-[110px] text-xs sm:text-sm">
 
                         {{ $time }}
 
@@ -195,8 +195,8 @@
 
                     <td data-date="{{ $day->format('Y-m-d') }}" class="
                         border border-gray-700
-                        h-24
-                        p-2
+                        h-16 sm:h-24
+                        p-1 sm:p-2
                         align-top
                         relative
                         bg-[#101010]

@@ -51,11 +51,11 @@
 
         <!-- HEADER -->
 
-        <div class="text-center mb-8">
+        <div class="text-center mb-6 sm:mb-8">
 
-            <div class="w-16 h-16 mx-auto rounded-2xl bg-yellow-500 flex items-center justify-center shadow-xl">
+            <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto rounded-2xl bg-yellow-500 flex items-center justify-center shadow-xl">
 
-                <span class="text-black text-3xl font-black">
+                <span class="text-black text-2xl sm:text-3xl font-black">
 
                     ♪
 
@@ -63,13 +63,13 @@
 
             </div>
 
-            <h1 class="text-3xl sm:text-4xl font-black text-yellow-500 mt-5">
+            <h1 class="text-2xl sm:text-4xl font-black text-yellow-500 mt-4 sm:mt-5">
 
                 Booking Studio
 
             </h1>
 
-            <p class="text-gray-400 mt-2 text-sm sm:text-base">
+            <p class="text-gray-400 mt-2 text-xs sm:text-base">
 
                 Rumah Nada Brawijaya
 
@@ -190,13 +190,13 @@
 
             <!-- GRID JAM -->
 
-            <div class="grid sm:grid-cols-2 gap-5 mb-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-6">
 
                 <!-- JAM MULAI -->
 
                 <div>
 
-                    <label class="block text-sm text-gray-400 mb-2">
+                    <label class="block text-xs sm:text-sm text-gray-400 mb-2">
 
                         Jam Mulai
 
@@ -205,7 +205,7 @@
                     <select
                         name="jam_mulai"
                         required
-                        class="w-full bg-[#151515] border border-gray-700 rounded-2xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition"
+                        class="w-full bg-[#151515] border border-gray-700 rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-sm text-white focus:outline-none focus:border-yellow-500 transition"
                     >
 
                         <option value="">
@@ -235,7 +235,7 @@
 
                 <div>
 
-                    <label class="block text-sm text-gray-400 mb-2">
+                    <label class="block text-xs sm:text-sm text-gray-400 mb-2">
 
                         Jam Selesai
 
@@ -244,7 +244,7 @@
                     <select
                         name="jam_selesai"
                         required
-                        class="w-full bg-[#151515] border border-gray-700 rounded-2xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 transition"
+                        class="w-full bg-[#151515] border border-gray-700 rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-sm text-white focus:outline-none focus:border-yellow-500 transition"
                     >
 
                         <option value="">
@@ -274,15 +274,15 @@
 
             <!-- INFO -->
 
-            <div class="bg-[#151515] border border-gray-700 rounded-2xl p-4 mb-6">
+            <div class="bg-[#151515] border border-gray-700 rounded-2xl p-3 sm:p-4 mb-6">
 
-                <h3 class="font-bold text-yellow-500 mb-2">
+                <h3 class="font-bold text-yellow-500 mb-2 text-sm sm:text-base">
 
                     Informasi Booking
 
                 </h3>
 
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-xs sm:text-sm text-gray-400 space-y-1 sm:space-y-2">
 
                     <li>• Studio buka pukul 09.00 - 21.00</li>
 
@@ -302,7 +302,7 @@
 
             <button
                 type="submit"
-                class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-black py-3 rounded-2xl transition duration-300 shadow-lg"
+                class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-black py-2 sm:py-3 rounded-2xl transition duration-300 shadow-lg text-sm sm:text-base"
             >
 
                 Booking Sekarang

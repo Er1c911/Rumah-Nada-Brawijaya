@@ -40,11 +40,11 @@
 
         <!-- TITLE -->
 
-        <div class="text-center mb-8">
+        <div class="text-center mb-6 sm:mb-8">
 
-            <div class="w-16 h-16 mx-auto rounded-2xl bg-yellow-500 flex items-center justify-center shadow-xl">
+            <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto rounded-2xl bg-yellow-500 flex items-center justify-center shadow-xl">
 
-                <span class="text-black text-3xl font-black">
+                <span class="text-black text-2xl sm:text-3xl font-black">
 
                     ♪
 
@@ -52,13 +52,13 @@
 
             </div>
 
-            <h1 class="text-3xl font-black text-yellow-500 mt-5">
+            <h1 class="text-2xl sm:text-3xl font-black text-yellow-500 mt-4 sm:mt-5">
 
                 Login Admin
 
             </h1>
 
-            <p class="text-gray-400 mt-2">
+            <p class="text-gray-400 mt-2 text-sm sm:text-base">
 
                 Rumah Nada Brawijaya
 
@@ -126,7 +126,7 @@
 
             <button
                 type="submit"
-                class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-black py-3 rounded-2xl transition duration-300 shadow-lg"
+                class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-black py-2 sm:py-3 rounded-2xl transition duration-300 shadow-lg text-sm sm:text-base"
             >
 
                 Login

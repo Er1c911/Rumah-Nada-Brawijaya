@@ -116,18 +116,18 @@
     <!-- SPREADSHEET DATA -->
 
     <div class="mb-10">
-        <div class="bg-[#111111] border border-gray-700 rounded-3xl p-6">
-            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <h2 class="text-2xl font-black text-yellow-500">Spreadsheet Data</h2>
+        <div class="bg-[#111111] border border-gray-700 rounded-3xl p-4 sm:p-6">
+            <div class="flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <h2 class="text-xl sm:text-2xl font-black text-yellow-500">Spreadsheet Data</h2>
                 <a
                     href="{{ $scheduleSpreadsheetUrl }}"
                     target="_blank"
-                    class="bg-yellow-500 hover:bg-yellow-400 text-black px-5 py-3 rounded-2xl font-bold transition"
+                    class="bg-yellow-500 hover:bg-yellow-400 text-black px-4 sm:px-5 py-2 sm:py-3 rounded-2xl font-bold transition text-sm sm:text-base w-full sm:w-auto text-center"
                 >
                     Buka Jadwal Spreadsheet
                 </a>
             </div>
-            <div class="mt-4 text-xs text-gray-500">
+            <div class="mt-3 sm:mt-4 text-xs text-gray-500">
                 Jadwal terakhir diperbarui: {{ $scheduleSpreadsheetUpdatedAt }}
             </div>
         </div>
@@ -202,16 +202,16 @@
 
                     <!-- BUTTON -->
 
-                    <div class="flex gap-3">
+                    <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
 
                         <!-- APPROVE -->
 
-                        <form action="/approve/{{ $booking->id }}" method="POST">
+                        <form action="/approve/{{ $booking->id }}" method="POST" class="w-full sm:w-auto">
 
                             @csrf
 
                             <button
-                                class="bg-green-500 hover:bg-green-400 text-white px-5 py-3 rounded-2xl font-bold transition"
+                                class="w-full bg-green-500 hover:bg-green-400 text-white px-4 sm:px-5 py-2 sm:py-3 rounded-2xl font-bold transition text-sm sm:text-base"
                             >
 
                                 Tambah ke Jadwal
@@ -222,12 +222,12 @@
 
                         <!-- REJECT -->
 
-                        <form action="/reject/{{ $booking->id }}" method="POST">
+                        <form action="/reject/{{ $booking->id }}" method="POST" class="w-full sm:w-auto">
 
                             @csrf
 
                             <button
-                                class="bg-red-500 hover:bg-red-400 text-white px-5 py-3 rounded-2xl font-bold transition"
+                                class="w-full bg-red-500 hover:bg-red-400 text-white px-4 sm:px-5 py-2 sm:py-3 rounded-2xl font-bold transition text-sm sm:text-base"
                             >
 
                                 Tolak
@@ -254,15 +254,15 @@
 
     <div class="mb-10">
 
-        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-5">
+        <div class="flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center sm:justify-between mb-5">
 
-            <h2 class="text-2xl font-black text-yellow-500">
+            <h2 class="text-xl sm:text-2xl font-black text-yellow-500">
 
                 Tambah Jadwal Manual
 
             </h2>
 
-            <p class="text-gray-400 text-sm max-w-xl">
+            <p class="text-gray-400 text-xs sm:text-sm max-w-xl">
 
                 Gunakan fitur ini ketika ada user yang belum menggunakan sistem booking.
 
@@ -270,9 +270,9 @@
 
         </div>
 
-        <div class="bg-[#111111] border border-gray-700 rounded-3xl p-6">
+        <div class="bg-[#111111] border border-gray-700 rounded-3xl p-4 sm:p-6">
 
-            <form action="/admin/schedule" method="POST" class="grid gap-4 lg:grid-cols-2">
+            <form action="/admin/schedule" method="POST" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
 
                 @csrf
 
@@ -346,7 +346,7 @@
 
                 <div class="lg:col-span-2 flex justify-end">
                     <button
-                        class="bg-yellow-500 hover:bg-yellow-400 text-black px-5 py-3 rounded-2xl font-bold transition"
+                        class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-black px-4 sm:px-5 py-2 sm:py-3 rounded-2xl font-bold transition text-sm sm:text-base"
                     >
                         Simpan Jadwal Manual
                     </button>
@@ -362,15 +362,15 @@
 
     <div class="mb-10">
 
-        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-5">
+        <div class="flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center sm:justify-between mb-5">
 
-            <h2 class="text-2xl font-black text-red-500">
+            <h2 class="text-xl sm:text-2xl font-black text-red-500">
 
                 Tutup Operasional Studio
 
             </h2>
 
-            <p class="text-gray-400 text-sm max-w-xl">
+            <p class="text-gray-400 text-xs sm:text-sm max-w-xl">
 
                 Pilih hari yang ingin ditutup dari operasi studio.
 
@@ -378,9 +378,9 @@
 
         </div>
 
-        <div class="bg-[#111111] border border-red-700 rounded-3xl p-6">
+        <div class="bg-[#111111] border border-red-700 rounded-3xl p-4 sm:p-6">
 
-            <form action="/admin/close-day" method="POST" class="grid gap-4 lg:grid-cols-2">
+            <form action="/admin/close-day" method="POST" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
 
                 @csrf
 
