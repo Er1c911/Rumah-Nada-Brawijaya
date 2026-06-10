@@ -76,7 +76,7 @@
 
         <a
             href="/logout"
-            class="bg-red-500 hover:bg-red-400 text-white px-4 py-2 rounded-2xl text-sm font-bold transition"
+            class="bg-red-500 hover:bg-red-400 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl text-xs sm:text-sm font-bold transition whitespace-nowrap"
         >
 
             Logout
@@ -137,7 +137,7 @@
 
     <div class="mb-10">
 
-        <h2 class="text-2xl font-black text-yellow-500 mb-5">
+        <h2 class="text-xl sm:text-2xl font-black text-yellow-500 mb-4 sm:mb-5">
 
             Booking Pending
 
@@ -145,7 +145,7 @@
 
         @if($bookings->count() == 0)
 
-        <div class="bg-[#111111] border border-gray-700 rounded-3xl p-6 text-gray-400">
+        <div class="bg-[#111111] border border-gray-700 rounded-3xl p-4 sm:p-6 text-gray-400 text-sm sm:text-base">
 
             Tidak ada booking pending
 
@@ -157,42 +157,37 @@
 
             @foreach($bookings as $booking)
 
-            <div class="bg-[#111111] border border-gray-700 rounded-3xl p-5">
+            <div class="bg-[#111111] border border-gray-700 rounded-3xl p-4 sm:p-5">
 
-                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+                <div class="flex flex-col gap-3 sm:gap-4">
 
                     <!-- INFO -->
 
                     <div>
 
-                        <h3 class="text-xl font-black text-yellow-500 mb-2">
+                        <h3 class="text-lg sm:text-xl font-black text-yellow-500 mb-2">
 
                             {{ $booking->nama }}
 
                         </h3>
 
-                        <div class="space-y-1 text-gray-300 text-sm sm:text-base">
+                        <div class="space-y-1 text-gray-300 text-xs sm:text-sm">
 
                             <p>
 
-                                Nomor Telepon :
-                                {{ $booking->telepon }}
+                                <span class="text-gray-400">Telepon:</span> {{ $booking->telepon }}
 
                             </p>
 
                             <p>
 
-                                Tanggal :
-                                {{ \Carbon\Carbon::parse($booking->tanggal)->locale('id')->translatedFormat('l, d F Y') }}
+                                <span class="text-gray-400">Tanggal:</span> {{ \Carbon\Carbon::parse($booking->tanggal)->locale('id')->translatedFormat('d M Y') }}
 
                             </p>
 
                             <p>
 
-                                Jam :
-                                {{ $booking->jam_mulai }}
-                                -
-                                {{ $booking->jam_selesai }}
+                                <span class="text-gray-400">Jam:</span> {{ $booking->jam_mulai }} - {{ $booking->jam_selesai }}
 
                             </p>
 
@@ -202,7 +197,7 @@
 
                     <!-- BUTTON -->
 
-                    <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
+                    <div class="flex flex-col sm:flex-row gap-2 w-full">
 
                         <!-- APPROVE -->
 
@@ -277,28 +272,28 @@
                 @csrf
 
                 <div>
-                    <label class="block text-sm text-gray-400 mb-2">Nama</label>
+                    <label class="block text-xs sm:text-sm text-gray-400 mb-2">Nama</label>
                     <input
                         type="text"
                         name="nama"
                         value="{{ old('nama') }}"
                         required
-                        class="w-full rounded-2xl border border-gray-700 bg-[#0f0f0f] px-4 py-3 text-white focus:border-yellow-500 focus:outline-none"
+                        class="w-full rounded-2xl border border-gray-700 bg-[#0f0f0f] px-3 sm:px-4 py-2 sm:py-3 text-sm text-white focus:border-yellow-500 focus:outline-none"
                     >
                 </div>
 
                 <div>
-                    <label class="block text-sm text-gray-400 mb-2">Nomor Telepon (opsional)</label>
+                    <label class="block text-xs sm:text-sm text-gray-400 mb-2">Nomor Telepon (opsional)</label>
                     <input
                         type="text"
                         name="telepon"
                         value="{{ old('telepon') }}"
-                        class="w-full rounded-2xl border border-gray-700 bg-[#0f0f0f] px-4 py-3 text-white focus:border-yellow-500 focus:outline-none"
+                        class="w-full rounded-2xl border border-gray-700 bg-[#0f0f0f] px-3 sm:px-4 py-2 sm:py-3 text-sm text-white focus:border-yellow-500 focus:outline-none"
                     >
                 </div>
 
-                <div>
-                    <label class="block text-sm text-gray-400 mb-2" for="tanggal">Tanggal</label>
+                <div class="sm:col-span-2">
+                    <label class="block text-xs sm:text-sm text-gray-400 mb-2" for="tanggal">Tanggal</label>
                     <div class="relative">
                         <input
                             id="tanggal"
@@ -306,7 +301,7 @@
                             name="tanggal"
                             value="{{ old('tanggal') }}"
                             required
-                            class="date-input w-full rounded-2xl border border-gray-700 bg-[#0f0f0f] px-4 py-3 pr-11 text-white focus:border-yellow-500 focus:outline-none"
+                            class="date-input w-full rounded-2xl border border-gray-700 bg-[#0f0f0f] px-3 sm:px-4 py-2 sm:py-3 pr-11 text-sm text-white focus:border-yellow-500 focus:outline-none"
                         >
                         <button type="button" onclick="openDatePicker()" class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-white focus:outline-none" aria-label="Pilih tanggal">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
@@ -316,13 +311,13 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-2 sm:gap-4 sm:col-span-2">
                     <div>
-                        <label class="block text-sm text-gray-400 mb-2">Jam Mulai</label>
+                        <label class="block text-xs sm:text-sm text-gray-400 mb-2">Jam Mulai</label>
                         <select
                             name="jam_mulai"
                             required
-                            class="w-full rounded-2xl border border-gray-700 bg-[#0f0f0f] px-4 py-3 text-white focus:border-yellow-500 focus:outline-none"
+                            class="w-full rounded-2xl border border-gray-700 bg-[#0f0f0f] px-3 sm:px-4 py-2 sm:py-3 text-sm text-white focus:border-yellow-500 focus:outline-none"
                         >
                             @for($i = 9; $i <= 22; $i++)
                                 <option value="{{ sprintf('%02d.00', $i) }}" {{ old('jam_mulai') == sprintf('%02d.00', $i) ? 'selected' : '' }}>{{ sprintf('%02d.00', $i) }}</option>
@@ -331,11 +326,11 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm text-gray-400 mb-2">Jam Selesai</label>
+                        <label class="block text-xs sm:text-sm text-gray-400 mb-2">Jam Selesai</label>
                         <select
                             name="jam_selesai"
                             required
-                            class="w-full rounded-2xl border border-gray-700 bg-[#0f0f0f] px-4 py-3 text-white focus:border-yellow-500 focus:outline-none"
+                            class="w-full rounded-2xl border border-gray-700 bg-[#0f0f0f] px-3 sm:px-4 py-2 sm:py-3 text-sm text-white focus:border-yellow-500 focus:outline-none"
                         >
                             @for($i = 10; $i <= 23; $i++)
                                 <option value="{{ sprintf('%02d.00', $i) }}" {{ old('jam_selesai') == sprintf('%02d.00', $i) ? 'selected' : '' }}>{{ sprintf('%02d.00', $i) }}</option>
@@ -344,11 +339,11 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-2 flex justify-end">
+                <div class="sm:col-span-2 flex justify-end">
                     <button
-                        class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-black px-4 sm:px-5 py-2 sm:py-3 rounded-2xl font-bold transition text-sm sm:text-base"
+                        class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-black px-4 sm:px-5 py-2 sm:py-3 rounded-2xl font-bold transition text-xs sm:text-sm"
                     >
-                        Simpan Jadwal Manual
+                        Simpan Jadwal
                     </button>
                 </div>
 
@@ -380,12 +375,12 @@
 
         <div class="bg-[#111111] border border-red-700 rounded-3xl p-4 sm:p-6">
 
-            <form action="/admin/close-day" method="POST" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
+            <form action="/admin/close-day" method="POST" class="grid gap-3 sm:grid-cols-2">
 
                 @csrf
 
-                <div>
-                    <label class="block text-sm text-gray-400 mb-2" for="tanggal_tutup">Tanggal Tutup</label>
+                <div class="sm:col-span-2">
+                    <label class="block text-xs sm:text-sm text-gray-400 mb-2" for="tanggal_tutup">Tanggal Tutup</label>
                     <div class="relative">
                         <input
                             id="tanggal_tutup"
@@ -393,7 +388,7 @@
                             name="tanggal_tutup"
                             value="{{ old('tanggal_tutup') }}"
                             required
-                            class="date-input w-full rounded-2xl border border-red-700 bg-[#0f0f0f] px-4 py-3 pr-11 text-white focus:border-red-500 focus:outline-none"
+                            class="date-input w-full rounded-2xl border border-red-700 bg-[#0f0f0f] px-3 sm:px-4 py-2 sm:py-3 pr-11 text-sm text-white focus:border-red-500 focus:outline-none"
                         >
                         <button type="button" onclick="openCloseDatePicker()" class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-white focus:outline-none" aria-label="Pilih tanggal tutup">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
@@ -403,19 +398,19 @@
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-sm text-gray-400 mb-2">Alasan (opsional)</label>
+                <div class="sm:col-span-2">
+                    <label class="block text-xs sm:text-sm text-gray-400 mb-2">Alasan (opsional)</label>
                     <input
                         type="text"
                         name="alasan"
                         value="{{ old('alasan') }}"
-                        class="w-full rounded-2xl border border-red-700 bg-[#0f0f0f] px-4 py-3 text-white focus:border-red-500 focus:outline-none"
+                        class="w-full rounded-2xl border border-red-700 bg-[#0f0f0f] px-3 sm:px-4 py-2 sm:py-3 text-sm text-white focus:border-red-500 focus:outline-none"
                     >
                 </div>
 
-                <div class="lg:col-span-2 flex justify-end">
+                <div class="sm:col-span-2 flex justify-end">
                     <button
-                        class="bg-red-500 hover:bg-red-400 text-white px-5 py-3 rounded-2xl font-bold transition"
+                        class="w-full sm:w-auto bg-red-500 hover:bg-red-400 text-white px-4 sm:px-5 py-2 sm:py-3 rounded-2xl font-bold transition text-xs sm:text-sm"
                     >
                         Tutup Studio
                     </button>
@@ -424,20 +419,20 @@
             </form>
 
             @if($closures->count())
-                <div class="mt-6 rounded-3xl border border-red-700 bg-[#0f0f0f] p-5">
-                    <h3 class="text-lg font-black text-red-500 mb-4">Hari Tutup Saat Ini</h3>
-                    <div class="grid gap-3">
+                <div class="mt-4 sm:mt-6 rounded-3xl border border-red-700 bg-[#0f0f0f] p-4 sm:p-5">
+                    <h3 class="text-sm sm:text-lg font-black text-red-500 mb-3 sm:mb-4">Hari Tutup Saat Ini</h3>
+                    <div class="grid gap-2 sm:gap-3">
                         @foreach($closures as $closure)
-                            <div class="flex items-center justify-between gap-3 rounded-2xl border border-red-700 bg-[#111111] p-4">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 rounded-2xl border border-red-700 bg-[#111111] p-3 sm:p-4">
                                 <div>
-                                    <div class="text-sm text-gray-400">{{ \Carbon\Carbon::parse($closure->tanggal)->locale('id')->translatedFormat('l, d F Y') }}</div>
+                                    <div class="text-xs sm:text-sm text-gray-400">{{ \Carbon\Carbon::parse($closure->tanggal)->locale('id')->translatedFormat('d M Y') }}</div>
                                     @if($closure->alasan)
-                                        <div class="text-xs text-gray-500 mt-1">Alasan: {{ $closure->alasan }}</div>
+                                        <div class="text-xs text-gray-500 mt-0.5">{{ $closure->alasan }}</div>
                                     @endif
                                 </div>
-                                <form action="/admin/open-day/{{ $closure->id }}" method="POST">
+                                <form action="/admin/open-day/{{ $closure->id }}" method="POST" class="w-full sm:w-auto">
                                     @csrf
-                                    <button class="bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-2xl font-bold transition">
+                                    <button class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl font-bold transition text-xs sm:text-sm">
                                         Buka Kembali
                                     </button>
                                 </form>
@@ -453,11 +448,11 @@
 
     <!-- NAVIGATION -->
 
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 mb-6">
 
         <a
             href="/admin?start={{ $prevWeek }}"
-            class="bg-[#111111] border border-gray-700 hover:border-yellow-500 px-5 py-3 rounded-2xl transition"
+            class="w-full sm:w-auto bg-[#111111] border border-gray-700 hover:border-yellow-500 px-4 sm:px-5 py-2 sm:py-3 rounded-2xl transition text-center text-xs sm:text-base"
         >
 
             ← Minggu Sebelumnya
@@ -466,7 +461,7 @@
 
         <a
             href="/admin?start={{ $nextWeek }}"
-            class="bg-[#111111] border border-gray-700 hover:border-yellow-500 px-5 py-3 rounded-2xl transition"
+            class="w-full sm:w-auto bg-[#111111] border border-gray-700 hover:border-yellow-500 px-4 sm:px-5 py-2 sm:py-3 rounded-2xl transition text-center text-xs sm:text-base"
         >
 
             Minggu Selanjutnya →
@@ -489,7 +484,7 @@
 
                     <!-- WAKTU -->
 
-                    <th class="sticky left-0 top-0 z-30 bg-yellow-500 text-black p-3 sm:p-4 min-w-[110px] text-center text-sm sm:text-base font-black border border-gray-700">
+                    <th class="sticky left-0 top-0 z-30 bg-yellow-500 text-black p-2 sm:p-3 min-w-[65px] sm:min-w-[110px] text-center text-xs sm:text-sm font-black border border-gray-700">
 
                         Waktu
 
@@ -501,22 +496,22 @@
 
                     <th data-date="{{ $day->format('Y-m-d') }}" class="
                         sticky top-0 z-20
-                        p-3 sm:p-4
-                        min-w-[120px] sm:min-w-[150px]
+                        p-2 sm:p-3
+                        min-w-[75px] sm:min-w-[120px]
                         border border-gray-700
                         bg-[#111111]
                         text-white
                     ">
 
-                        <div class="font-black text-sm sm:text-base">
+                        <div class="font-black text-xs sm:text-sm">
 
-                            {{ $day->locale('id')->translatedFormat('l') }}
+                            {{ substr($day->locale('id')->translatedFormat('l'), 0, 3) }}
 
                         </div>
 
-                        <div class="text-xs sm:text-sm mt-1">
+                        <div class="text-xs mt-1">
 
-                            {{ $day->format('d-m-Y') }}
+                            {{ $day->format('d-m') }}
 
                         </div>
 
@@ -538,7 +533,7 @@
 
                     <!-- JAM -->
 
-                    <td class="sticky left-0 z-20 bg-[#111111] border border-gray-700 text-center font-bold p-3 min-w-[110px]">
+                    <td class="sticky left-0 z-20 bg-[#111111] border border-gray-700 text-center font-bold p-2 sm:p-3 min-w-[65px] sm:min-w-[110px] text-xs sm:text-sm">
 
                         {{ $time }}
 
@@ -550,8 +545,8 @@
 
                     <td data-date="{{ $day->format('Y-m-d') }}" class="
                         border border-gray-700
-                        h-24
-                        p-2
+                        h-16 sm:h-24
+                        p-1 sm:p-2
                         align-top
                         relative
                         bg-[#101010]
